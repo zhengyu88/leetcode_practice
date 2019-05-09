@@ -1,0 +1,15 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        res = []
+
+        for i in range(numRows):
+            if i == 0:
+                res.append([1])
+                continue
+            temp = [1] * (i+1)
+            for index, v in enumerate(temp):
+                if index == 0 or index == len(temp) - 1:
+                    continue
+                temp[index] = res[-1][index - 1] + res[-1][index]
+            res.append(temp)
+        return res
