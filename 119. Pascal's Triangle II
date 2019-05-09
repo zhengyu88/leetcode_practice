@@ -1,0 +1,11 @@
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        res = []
+        for i in range(rowIndex + 1):
+            temp = [1] * (i + 1)
+            for index, v in enumerate(temp):
+                if index == 0 or index == len(temp) - 1:
+                    continue
+                temp[index] = res[-1][index - 1] + res[-1][index]
+            res.append(temp)
+        return res[rowIndex]
